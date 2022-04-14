@@ -1,8 +1,14 @@
 import numpy as np
 
+
 def angle2rad(angle_list):
-    reult = [angle / 180 * 3.1415926 for angle in angle_list]
-    print("  yaw: {}\n  pitch: {}\n  roll: {}\n".format(reult[0], reult[1], reult[2]))
+  reult = [angle / 180 * 3.1415926 for angle in angle_list]
+  print("  yaw: {}\n  pitch: {}\n  roll: {}\n".format(reult[0], reult[1], reult[2]))
+
+
+def rad2angle(rad_list):
+  reult = [rad / 3.1415926 * 180 for rad in rad_list]
+  print(reult)
 
 
 data = [[100.464, 0.636, 0.773],
@@ -16,4 +22,8 @@ data = [[100.464, 0.636, 0.773],
         [1.002, 0.045, -0.962],
         [-0.272, -0.438, 0.45]]
 
-print(angle2rad(data[-1]))
+# print(angle2rad(data[-1]))
+
+data = [-0.0069289571304174888, 0.46132542788713976, -0.44347070963923724, 0.10349802464326374, -0.081367249727974683,
+        0.0081855941918533622, 0.027419122548830919]
+rad2angle(data)
