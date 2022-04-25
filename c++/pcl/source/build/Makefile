@@ -130,6 +130,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named cloud_merge
+
+# Build rule for target.
+cloud_merge: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cloud_merge
+.PHONY : cloud_merge
+
+# fast build rule for target.
+cloud_merge/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cloud_merge.dir/build.make CMakeFiles/cloud_merge.dir/build
+.PHONY : cloud_merge/fast
+
+#=============================================================================
 # Target rules for targets named cloud_viewer
 
 # Build rule for target.
@@ -154,6 +167,33 @@ cloud_viewer_multi: cmake_check_build_system
 cloud_viewer_multi/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cloud_viewer_multi.dir/build.make CMakeFiles/cloud_viewer_multi.dir/build
 .PHONY : cloud_viewer_multi/fast
+
+cloud_merge.o: cloud_merge.cpp.o
+
+.PHONY : cloud_merge.o
+
+# target to build an object file
+cloud_merge.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cloud_merge.dir/build.make CMakeFiles/cloud_merge.dir/cloud_merge.cpp.o
+.PHONY : cloud_merge.cpp.o
+
+cloud_merge.i: cloud_merge.cpp.i
+
+.PHONY : cloud_merge.i
+
+# target to preprocess a source file
+cloud_merge.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cloud_merge.dir/build.make CMakeFiles/cloud_merge.dir/cloud_merge.cpp.i
+.PHONY : cloud_merge.cpp.i
+
+cloud_merge.s: cloud_merge.cpp.s
+
+.PHONY : cloud_merge.s
+
+# target to generate assembly for a file
+cloud_merge.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cloud_merge.dir/build.make CMakeFiles/cloud_merge.dir/cloud_merge.cpp.s
+.PHONY : cloud_merge.cpp.s
 
 cloud_viewer.o: cloud_viewer.cpp.o
 
@@ -217,8 +257,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... cloud_merge"
 	@echo "... cloud_viewer"
 	@echo "... cloud_viewer_multi"
+	@echo "... cloud_merge.o"
+	@echo "... cloud_merge.i"
+	@echo "... cloud_merge.s"
 	@echo "... cloud_viewer.o"
 	@echo "... cloud_viewer.i"
 	@echo "... cloud_viewer.s"

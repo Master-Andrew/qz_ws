@@ -104,8 +104,6 @@ int main(int argc, char* argv[])
   mergerPointcloud(filePath, files, header, cloud_final);
 
   pcl::io::savePCDFileASCII(output, *cloud_final);
-
-  showPointcloud(cloud_final);
   std::cout << "save merge pointcloud : " << output << endl;
 
   return 0;

@@ -51,13 +51,14 @@ def load_all_camera_intrinsic(path, head):
   for name in name_list:
     if name[:len(head)] == head:
       camera_intrinsic_list.append(decode_camera_intrinsic_2(path + name))
-  for i in range(10):
+  print("find {} intrinsic files.".format(len(camera_intrinsic_list)))
+  for i in range(min(10, len(camera_intrinsic_list))):
     print(camera_intrinsic_list[i])
   return camera_intrinsic_list
 
 
 def plot_camera_intrinsic_distribute(camera_intrinsic_list):
-  factor = 4
+  factor = 3
 
   fx_list = []
   fy_list = []
@@ -166,6 +167,6 @@ def mian(path, head):
 
 
 if __name__ == "__main__":
-  path = "/home/qcraft/Downloads/camera_intrinsic/H110/"
-  # path = "/home/qcraft/vehicles/v2/camera/inherent/"
-  mian(path, "H110")
+  # path = "/home/qcraft/Downloads/camera_intrinsic/H110/"
+  path = "/home/qcraft/vehicles/v2/camera/inherent/"
+  mian(path, "H30S1")

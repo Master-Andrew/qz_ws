@@ -72,6 +72,7 @@ CMAKE_BINARY_DIR = /home/qcraft/qz_ws/c++/pcl/source/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/cloud_merge.dir/all
 all: CMakeFiles/cloud_viewer.dir/all
 all: CMakeFiles/cloud_viewer_multi.dir/all
 
@@ -83,10 +84,38 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/cloud_merge.dir/clean
 clean: CMakeFiles/cloud_viewer.dir/clean
 clean: CMakeFiles/cloud_viewer_multi.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/cloud_merge.dir
+
+# All Build rule for target.
+CMakeFiles/cloud_merge.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cloud_merge.dir/build.make CMakeFiles/cloud_merge.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cloud_merge.dir/build.make CMakeFiles/cloud_merge.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles --progress-num=1,2 "Built target cloud_merge"
+.PHONY : CMakeFiles/cloud_merge.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/cloud_merge.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/cloud_merge.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles 0
+.PHONY : CMakeFiles/cloud_merge.dir/rule
+
+# Convenience name for target.
+cloud_merge: CMakeFiles/cloud_merge.dir/rule
+
+.PHONY : cloud_merge
+
+# clean rule for target.
+CMakeFiles/cloud_merge.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cloud_merge.dir/build.make CMakeFiles/cloud_merge.dir/clean
+.PHONY : CMakeFiles/cloud_merge.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/cloud_viewer.dir
@@ -95,7 +124,7 @@ clean: CMakeFiles/cloud_viewer_multi.dir/clean
 CMakeFiles/cloud_viewer.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cloud_viewer.dir/build.make CMakeFiles/cloud_viewer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cloud_viewer.dir/build.make CMakeFiles/cloud_viewer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles --progress-num=1,2 "Built target cloud_viewer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles --progress-num=3,4 "Built target cloud_viewer"
 .PHONY : CMakeFiles/cloud_viewer.dir/all
 
 # Build rule for subdir invocation for target.
@@ -122,7 +151,7 @@ CMakeFiles/cloud_viewer.dir/clean:
 CMakeFiles/cloud_viewer_multi.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cloud_viewer_multi.dir/build.make CMakeFiles/cloud_viewer_multi.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cloud_viewer_multi.dir/build.make CMakeFiles/cloud_viewer_multi.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles --progress-num=3,4 "Built target cloud_viewer_multi"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles --progress-num=5,6 "Built target cloud_viewer_multi"
 .PHONY : CMakeFiles/cloud_viewer_multi.dir/all
 
 # Build rule for subdir invocation for target.

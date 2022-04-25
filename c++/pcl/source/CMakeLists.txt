@@ -9,3 +9,6 @@ target_link_libraries (cloud_viewer ${PCL_LIBRARIES})
 
 add_executable (cloud_viewer_multi cloud_viewer_multi.cpp)
 target_link_libraries (cloud_viewer_multi ${PCL_LIBRARIES})
+
+add_executable (cloud_merge cloud_merge.cpp)
+target_link_libraries (cloud_merge ${PCL_LIBRARIES})
