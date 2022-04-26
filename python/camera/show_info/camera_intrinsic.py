@@ -53,6 +53,7 @@ def decodeExtrinsic(sn, extrinsic_path=extrinsic_path):
 
 def rad2degree(rad):
   return rad / 3.14159 * 180
+  # return rad
 
 
 def fill_intrinsic(intrinsic):
