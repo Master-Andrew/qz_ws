@@ -18,7 +18,14 @@ def decode_lines(result, lines, index):
       key = words[0][:-1]
       value = words[1]
 
-    result[key] = value
+    if key in result:
+      if type(result[key]) != list:
+        value_exit = result[key]
+        result[key] = []
+        result[key].append(value_exit)
+      result[key].append(value)
+    else:
+      result[key] = value
 
     index += 1
 
@@ -35,19 +42,16 @@ def decodePbTxt(file):
       lines = f.readlines()
       index = 0
       result, index = decode_lines(result, lines, index)
-
-  # print(result)
-
   return result
 
 
-def decodeIntrinsic(sn, intrinsic_path=intrinsic_path):
-  intrinsic_file = intrinsic_path + sn + ".pb.txt"
+def decodeIntrinsic(sn, device):
+  intrinsic_file = "/home/qcraft/vehicles/v2/{}/inherent/{}.pb.txt".format(device, sn)
   return decodePbTxt(intrinsic_file)
 
 
-def decodeExtrinsic(sn, extrinsic_path=extrinsic_path):
-  intrinsic_file = extrinsic_path + sn + ".pb.txt"
+def decodeExtrinsic(sn, device):
+  intrinsic_file = "/home/qcraft/vehicles/v2/{}/installation/{}.pb.txt".format(device, sn)
   return decodePbTxt(intrinsic_file)
 
 
@@ -61,3 +65,7 @@ def fill_intrinsic(intrinsic):
     intrinsic["intrinsics"]["distort_coeffs"]["k4"] = 0
     intrinsic["intrinsics"]["distort_coeffs"]["k5"] = 0
     intrinsic["intrinsics"]["distort_coeffs"]["k6"] = 0
+
+
+if __name__=="__main__":
+  print(decodePbTxt("/home/qcraft/vehicles/v2/omc/installation/OMC_0DXGWREG.pb.txt"))

@@ -41,7 +41,7 @@ def write_camera_extrinsic(camera_id, camera_sn, camera_extrinsic):
       f.write("  roll: {}\n".format(camera_extrinsic["roll"]))
       f.write("  calibration_engineer: \"\"\n")
       f.write("}\n")
-      f.write("ref_lidar_id: {}\n".format(camera_extrinsic["reference"]))
+      f.write("ref_lidar_id: {}\n".format(camera_extrinsic["ref_lidar_id"]))
       f.write("device_path: \"/dev/video{}\"\n".format(camera_device_path[camera_id]))
       f.write("hardware_trigger: true\n")
       f.write("rotate_90_ccw: false\n")
@@ -63,8 +63,8 @@ if __name__ == "__main__":
   if len(sys.argv) < 2:
     print("please input vehicle number Qxxxx")
     sys.exit()
-  position_file = "camera_position.csv"
-  extrinsic_file = "MKZ_DBQ3.csv"
+  position_file = "config/camera_position.csv"
+  extrinsic_file = "config/MKZ_DBQ3.csv"
 
   for i in range(1, len(sys.argv)):
     sn = sys.argv[i]
