@@ -75,9 +75,10 @@ def printCameraHheader():
   number = 320
   print("-" * number)
   print("{:20s}{:25s}{:20s}{:^10s}{:^10s}{:^10s}{:^10s}{:^10s}{:^10s}{:^20s}{:^20s}{:^20s}"
-        "{:^15s}{:^15s}{:^15s}{:^10s}{:^10s}{:^10s}{:^10s}{:^20s}{:^12s}{:^12s}".
+        "{:^15s}{:^15s}{:^15s}{:^10s}{:^10s}{:^10s}{:^10s}{:^20s}{:^20s}{:^12s}{:^12s}".
         format("camera_sn", "id", "model", "yaw", "pitch", "roll", "x", "y", "z", "ref_lidar_id", "obc", "device_path",
                "hardware_trigger", "rotate_90_ccw", "expected_fps", "roi_x", "roi_y", "roi_width", "roi_height",
+               "full_undistort_fov",
                "warp_perspective", "warp_width", "warp_height"))
   print("-" * number)
 
@@ -113,6 +114,7 @@ def showCameraExtrinsic(camera_extrinsic, lidar_extrinsic, obc_camera_extrinsic)
   warp_perspective = getDictValue(camera_extrinsic, ["warp_perspective", ])
   warp_width = getDictValue(camera_extrinsic, ["warped_size", "width"])
   warp_height = getDictValue(camera_extrinsic, ["warped_size", "height"])
+  full_undistort_fov = getDictValue(camera_extrinsic, ["full_undistort_fov", ])
 
   if "roi" in camera_extrinsic:
     roi_x = camera_extrinsic["roi"]["x"]
@@ -131,10 +133,49 @@ def showCameraExtrinsic(camera_extrinsic, lidar_extrinsic, obc_camera_extrinsic)
     obc = "not define"
 
   print("{:20s}{:25s}{:20s}{:^10.3f}{:^10.3f}{:^10.3f}{:^10.3f}{:^10.3f}{:^10.3f}{:^20s}{:^20s}{:^20s}"
-        "{:^15s}{:^15s}{:^15s}{:^10s}{:^10s}{:^10s}{:^10s}{:^20s}{:^12s}{:^12s}".
+        "{:^15s}{:^15s}{:^15s}{:^10s}{:^10s}{:^10s}{:^10s}{:^20s}{:^20s}{:^12s}{:^12s}".
         format(sn, id, model, yaw, pitch, roll, x, y, z, ref_lidar_id, obc, device_path,
-               hardware_trigger, rotate_90_ccw, expected_fps, roi_x, roi_y, roi_width, roi_height,
+               hardware_trigger, rotate_90_ccw, expected_fps, roi_x, roi_y, roi_width, roi_height, full_undistort_fov,
                warp_perspective, warp_width, warp_height))
+
+
+def printCameraIntrinsicHheader():
+  number = 300
+  print("-" * number)
+  print("{:20s}{:20s}{:^15s}{:^15s}{:^15s}{:^15s}{:^15s}{:^15s}{:^15s}{:^15s}{:^15s}"
+        "{:^15s}{:^15s}{:^15s}{:^10s}{:^10s}{:^30s}{:^20s}".
+        format("camera_sn", "model", "k1", "k2", "p1", "p2", "k3", "k4", "k5", "k6", "fx",
+               "fy", "cx", "cy", "rms", "max_fps", "mid_row_time_since_trigger", "rolling_elapse_time"))
+  print("-" * number)
+
+
+def showCameraIntrinsic(camera_intrinsic):
+  camera_sn = camera_intrinsic["sn"]
+  model = camera_intrinsic["model"]
+  k1 = float(getDictValue(camera_intrinsic, ["intrinsics", "distort_coeffs", "k1"], "0"))
+  k2 = float(getDictValue(camera_intrinsic, ["intrinsics", "distort_coeffs", "k2"], "0"))
+  p1 = float(getDictValue(camera_intrinsic, ["intrinsics", "distort_coeffs", "p1"], "0"))
+  p2 = float(getDictValue(camera_intrinsic, ["intrinsics", "distort_coeffs", "p2"], "0"))
+  k3 = float(getDictValue(camera_intrinsic, ["intrinsics", "distort_coeffs", "k3"], "0"))
+  k4 = float(getDictValue(camera_intrinsic, ["intrinsics", "distort_coeffs", "k4"], "0"))
+  k5 = float(getDictValue(camera_intrinsic, ["intrinsics", "distort_coeffs", "k5"], "0"))
+  k6 = float(getDictValue(camera_intrinsic, ["intrinsics", "distort_coeffs", "k6"], "0"))
+
+  fx = float(getDictValue(camera_intrinsic, ["intrinsics", "camera_matrix", "fx"], "0"))
+  fy = float(getDictValue(camera_intrinsic, ["intrinsics", "camera_matrix", "fy"], "0"))
+  cx = float(getDictValue(camera_intrinsic, ["intrinsics", "camera_matrix", "cx"], "0"))
+  cy = float(getDictValue(camera_intrinsic, ["intrinsics", "camera_matrix", "cy"], "0"))
+
+  rms = float(getDictValue(camera_intrinsic, ["intrinsics", "rms"], "0"))
+
+  max_fps = getDictValue(camera_intrinsic, ["max_fps", ])
+  mid_row_time_since_trigger = getDictValue(camera_intrinsic, ["mid_row_time_since_trigger", ])
+  rolling_elapse_time = getDictValue(camera_intrinsic, ["rolling_elapse_time", ])
+
+  print("{:20s}{:20s}{:^15.6f}{:^15.6f}{:^15.6f}{:^15.6f}{:^15.6f}{:^15.6f}{:^15.6f}{:^15.6f}{:^15.6f}"
+        "{:^15.6f}{:^15.6f}{:^15.6f}{:^10.6}{:^10s}{:^30s}{:^20s}".
+        format(camera_sn, model, k1, k2, p1, p2, k3, k4, k5, k6, fx,
+               fy, cx, cy, rms, max_fps, mid_row_time_since_trigger, rolling_elapse_time))
 
 
 def printLidarHeader():
@@ -436,6 +477,8 @@ def showVechicleExtrinsic(car_number):
   with open(param_file, "r") as f:
     lines = f.readlines()
 
+    camera_extrinsic_list = []
+    camera_intrinsic_list = []
     obc_extrinsic_list = []
     radar_extrinsic_list = []
     lidar_extrinsic_dict = {}
@@ -443,13 +486,25 @@ def showVechicleExtrinsic(car_number):
     v2x_extrinsic = {}
     index = 0
     while index + 3 < len(lines):
-      if lines[index] == "hardwares {\n" and lines[index + 3] == "  type: HARDWARE_LIDAR\n":
+      if lines[index] == "hardwares {\n" and lines[index + 3] == "  type: HARDWARE_CAMERA\n":
+        camera_sn = lines[index + 2].split()[1][1:-1]
+        model = lines[index + 1].split()[1][1:-1]
+        camera_extrinsic = decodeExtrinsic(camera_sn, "camera")
+        camera_extrinsic["sn"] = camera_sn
+        camera_extrinsic["model"] = model
+        camera_extrinsic_list.append(camera_extrinsic)
+
+        camera_intrinsic = decodeIntrinsic(camera_sn, "camera")
+        camera_intrinsic["sn"] = camera_sn
+        camera_intrinsic["model"] = model
+        camera_intrinsic_list.append(camera_intrinsic)
+
+      elif lines[index] == "hardwares {\n" and lines[index + 3] == "  type: HARDWARE_LIDAR\n":
         lidar_sn = lines[index + 2].split()[1][1:-1]
         model = lines[index + 1].split()[1][1:-1]
         lidar_extrinsic = decodeExtrinsic(lidar_sn, "lidar")
         lidar_extrinsic["sn"] = lidar_sn
         lidar_extrinsic["model"] = model
-        # print(lidar_extrinsic)
         lidar_extrinsic_dict[lidar_extrinsic["lidar_id"]] = lidar_extrinsic
 
       elif lines[index] == "hardwares {\n" and lines[index + 3] == "  type: HARDWARE_GNSS\n":
@@ -500,21 +555,13 @@ def showVechicleExtrinsic(car_number):
 
     obc_camera_extrinsic = obcCameraExtrinsic(obc_extrinsic_list)
 
-    index = 0
-    camera_extrinsic_list = []
-    while index + 3 < len(lines):
-      if lines[index] == "hardwares {\n" and lines[index + 3] == "  type: HARDWARE_CAMERA\n":
-        camera_sn = lines[index + 2].split()[1][1:-1]
-        model = lines[index + 1].split()[1][1:-1]
-        camera_extrinsic = decodeExtrinsic(camera_sn, "camera")
-        camera_extrinsic["sn"] = camera_sn
-        camera_extrinsic["model"] = model
-        camera_extrinsic_list.append(camera_extrinsic)
-      index += 1
+    print("vehicle_sn : ",car_number)
+    print("extrinsic")
 
     if gnss_imu_extrinsic:
       printGNSSIMUHeader()
       showGNSSIMUExtrinsic(gnss_imu_extrinsic)
+
 
     printCameraHheader()
     for camera_extrinsic in camera_extrinsic_list:
@@ -527,12 +574,6 @@ def showVechicleExtrinsic(car_number):
       else:
         showCameraExtrinsic(camera_extrinsic, lidar_extrinsic_dict[camera_extrinsic["ref_lidar_id"]],
                             obc_camera_extrinsic)
-      # except:
-      #   print(camera_extrinsic["sn"])
-      #   print("showCameraExtrinsic error!!!!!!!!!!!!!!!")
-      #   print(camera_extrinsic)
-      #   for i in range(10):
-      #     print("!" * 100)
 
     printLidarHeader()
     for id in lidar_extrinsic_dict:
@@ -554,6 +595,11 @@ def showVechicleExtrinsic(car_number):
 
     printV2XHeader()
     showV2XExtrinsic(v2x_extrinsic)
+
+    print("\n\nintrinsic")
+    printCameraIntrinsicHheader()
+    for camera_intrinsic in camera_intrinsic_list:
+      showCameraIntrinsic(camera_intrinsic)
 
 
 def judegeVehiclesExist():
