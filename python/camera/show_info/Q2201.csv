@@ -1,45 +1,37 @@
 ﻿sn,model,camera_id,extrinsics,x,y,z,yaw,pitch,roll,calibration_engineer,calibration_time,calibration_run,extrinsics,ref_lidar_id,device_path,hardware_trigger,rotate_90_ccw,expected_fps,roi,x,y,width,height,roi,full_undistort_fov,warp_perspective,warped_size,width,height,warped_size,camera_to_vehicle_extrinsics,x,y,z,yaw,pitch,roll,camera_to_vehicle_extrinsics
-H110SA-D11300119,IMX490_H115,CAM_L_REAR_LEFT,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H110SA-D11300380,IMX490_H115,CAM_L_LEFT,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H110SA-D11300283,IMX490_H115,CAM_L_FRONT_LEFT,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H110SA-D11300156,IMX490_H115,CAM_L_FRONT,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H60S-D11290028,AR0820_H60,CAM_R_FRONT_HD,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H60S1-D12160020,IMX490_H60,CAM_R_FRONT_DIM,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H110SA-D11300090,IMX490_H115,CAM_R_FRONT_RIGHT,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H110SA-D11300219,IMX490_H115,CAM_R_RIGHT,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H110SA-D11300058,IMX490_H115,CAM_R_REAR_RIGHT,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H60S-E01250557,IMX490_H60,CAM_PBQ_REAR,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H110SA-D11300243,IMX490_H115,CAM_PBQ_REAR_LEFT,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H110SA-D11300010,IMX490_H115,CAM_PBQ_FRONT_LEFT,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H30S1-E01230543,AR0820_H30,CAM_PBQ_FRONT_TELE,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H120S-E01240500,AR0820_H120,CAM_PBQ_FRONT_WIDE,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H110SA-D11300187,IMX490_H115,CAM_PBQ_FRONT_RIGHT,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
-H110SA-D11300057,IMX490_H115,CAM_PBQ_REAR_RIGHT,{,,,,,,,,,,},,,,,,{,,,,,},,,{,,,},{,,,,,,,}
+H60S-E01250557,IMX490_H60, CAM_PBQ_REAR,{, -1.718, -0.643, -0.2272, -3.14000440397047, 0.0031066860685499075, -0.0033335788713091696," ""wdq"""," ""2022-03-23 03:41:25""",,}, LDR_FRONT_LEFT," ""/dev/video2""", true, false, 20,{, 0, 384, 2624, 1152,}, true,,{,,,},{, 0.399686, 0.0225556, 1.5316, 3.1278, 0.00918722, -0.00172094,}
+H110SA-D11300243,IMX490_H115, CAM_PBQ_REAR_LEFT,{, 0.7, 0.312, -1, -3.8155515442473775, 0.021502456384570139, 0.0034208453339088854," ""wdq"""," ""2022-04-15 11:06:47""",,}, LDR_FRONT_LEFT," ""/dev/video0""", true, false, 20,{, 640, 0, 2304, 1536,}, true, false,{,,,},{, 2.41694, 0.874425, 0.859647, 2.43939, -0.01958, -0.0287886,}
+H110SA-D11300010,IMX490_H115, CAM_PBQ_FRONT_LEFT,{, 0.018, -0.036, -0.281, 1.061439437892864, 0.17334610130807682, -0.011868238913561441," ""wdq"""," ""2022-03-23 15:53:22""",,}, LDR_FRONT_LEFT," ""/dev/video0""", true, false, 20,{,,,,,}, true, true,{, 2304, 1536,},{, 1.58308, 0.583102, 1.41768, 1.01158, 0.304796, -0.0108923,}
+H30S1-E01230543,AR0820_H30, CAM_PBQ_FRONT_TELE,{, 0.13, -0.591, -0.216, 0.020734511513692273, -0.015428710587630035, -0.010227629416686781," ""wdq"""," ""2022-03-23 03:58:32""",,}, LDR_FRONT_LEFT," ""/dev/video2""", true, false, 20,{, 0, 720, 3840, 1440,},,,{,,,},{, 1.61057, 0.101195, 1.4668, 0.01767, -0.0634263, -0.000759413,}
+H120S-E01240500,AR0820_H120, CAM_PBQ_FRONT_WIDE,{, 0.14, 0.62, -0.216, 0.026703537555513468, 0.0026354471705114322, 0.0027052603405912151," ""wdq"""," ""2022-04-19 04:53:01""",,}, LDR_FRONT_RIGHT," ""/dev/video3""", true, false, 20,{, 0, 720, 3840, 1440,},,,{,,,},{, 1.62666, -0.110546, 1.46934, 0.0118174, -0.0622638, 0.0186444,}
+H110SA-D11300187,IMX490_H115, CAM_PBQ_FRONT_RIGHT,{, 0.018, 0.036, -0.281, -1.0436370795225294, 0.17683675981206545, 0.012217304763960306," ""wdq"""," ""2022-03-23 15:53:22""",,}, LDR_FRONT_RIGHT," ""/dev/video1""", true, false, 20,{,,,,,}, true, true,{, 2304, 1536,},{, 1.58126, -0.612255, 1.43698, -1.01606, 0.287686, 0.0142523,}
+H110SA-D11300057,IMX490_H115, CAM_PBQ_REAR_RIGHT,{, 0.652, -0.312, -1, -2.449080912983467, 0.017383479349863527, -0.025813419636995218," ""wdq"""," ""2022-04-19 05:05:46""",,}, LDR_FRONT_RIGHT," ""/dev/video1""", true, false, 20,{, 128, 0, 2304, 1536,}, true, false,{,,,},{, 2.38095, -0.923054, 0.859515, -2.45641, -0.0508214, 0.0132104,}
 
 sn,model,radar_id,extrinsics,x,y,z,yaw,pitch,roll,calibration_engineer,calibration_time,calibration_run,extrinsics,socket_can_id,sensor_id
-RADAR_Y5YIDY0D,RADAR_CONTI408,RAD_FRONT,{,,,,,,,,,,},,
-RADAR_436QFKK6,RADAR_CONTI408,RAD_REAR,{,,,,,,,,,,},,
+RADAR_Y5YIDY0D,RADAR_CONTI408, RAD_FRONT,{, 3.68, 0, 0.4, 0.024475, 0, 0," ""zhihui"""," ""2021-06-25 06:16:22""",,}, 2, 0
+RADAR_Y5YIDW02,RADAR_CONTI308, RAD_REAR_LEFT,{, -0.755, 0.745, 0.85, 2.1843, 0, 0," ""zhihui"""," ""2022-03-24 06:16:22""",,}, 1, 4
+RADAR_Y5YIES28,RADAR_CONTI308, RAD_REAR_RIGHT,{, -0.755, -0.745, 0.85, -2.2748, 0, 0," ""zhihui"""," ""2022-03-24 06:16:22""",,}, 3, 5
 
-sn,model,lidar_id,extrinsics,x,y,z,yaw,pitch,roll,calibration_engineer,calibration_time,calibration_run,extrinsics,enabled,valid_point_min_range,rs_lidar_params,difop_port,ip_address,rs_lidar_params,hesai_lidar_params,intensity_nonlinear_mapping,hesai_lidar_params,ouster_lidar_params,ip_address,ouster_lidar_params,port,ip
-LIDAR_7UXRFAUN,LIDAR_RS_M1,LDR_FRONT,{,,,,,,,,,,},,,{,,,},{,,},{,,},,
-LIDAR_MXHS21DQ,LIDAR_PANDAR_64,LDR_FRONT_LEFT,{,,,,,,,,,,},,,{,,,},{,,},{,,},,
-LIDAR_0SYFUZUQ,LIDAR_PANDAR_64,LDR_FRONT_RIGHT,{,,,,,,,,,,},,,{,,,},{,,},{,,},,
-LIDAR_BEENRT91,LIDAR_RS_BPEARL,LDR_FRONT_LEFT_BLIND,{,,,,,,,,,,},,,{,,,},{,,},{,,},,
-LIDAR_HGSZ6S3C,LIDAR_RS_BPEARL,LDR_FRONT_RIGHT_BLIND,{,,,,,,,,,,},,,{,,,},{,,},{,,},,
+sn,model,lidar_id,extrinsics,x,y,z,yaw,pitch,roll,calibration_engineer,calibration_time,calibration_run,extrinsics,enabled,valid_point_min_range,rs_lidar_params,difop_port,ip_address,rs_lidar_params,hesai_lidar_params,intensity_nonlinear_mapping,hesai_lidar_params,ouster_lidar_params,ip_address,ouster_lidar_params,port,ip,ignored_scan_azimuth_ranges_in_degree,first,last,first_beam,last_beam,ignored_scan_azimuth_ranges_in_degree
+LIDAR_7UXRFAUN,LIDAR_RS_M1, LDR_FRONT,{, 1.7019276971643817, -0.058895269491359481, 1.5684538709178608, -0.0043015977000750993, -0.019469459618734586, 0.0063486014677147651," ""jinlog"""," ""2022-04-24 14:04:54"""," ""20220424_214713_Q2201""",}, true,,{, 7791," ""192.168.6.206""",},{,,},{,,}, 2373,,{,,,,,}
+LIDAR_MXHS21DQ,LIDAR_PANDAR_64, LDR_FRONT_LEFT,{, 1.5821442857751833, 0.58419711140768626, 1.812, -0.0096750514473029625, -0.0013554812728511223, 0.017536721406034239," ""jinlog"""," ""2022-04-24 14:04:54"""," ""20220424_214713_Q2201""",}, true,,{,,,},{, true,},{,,}, 2368," ""192.168.6.201""",{, 260, 275,,,},{, 0, 10, 62, 63,}
+LIDAR_0SYFUZUQ,LIDAR_PANDAR_64, LDR_FRONT_RIGHT,{, 1.5917309141063611, -0.700178404219187, 1.790888597229525, -0.0029642910768075126, -0.0025769490163223274, -0.002146924307771414," ""jinlog"""," ""2022-04-24 14:04:54"""," ""20220424_214713_Q2201""",}, true,,{,,,},{, true,},{,,}, 2369," ""192.168.6.202""",{, 80, 95,,,},{, 350, 360, 62, 63,}
+LIDAR_BEENRT91,LIDAR_RS_BPEARL, LDR_FRONT_LEFT_BLIND,{, 1.5851695568714184, 0.58417049143163635, 1.5390157956624064, -2.3676716944048977, 0.010259151601802685, -0.0053184271717503506," ""jinlog"""," ""2022-04-24 14:04:54"""," ""20220424_214713_Q2201""",}, true, 0.8,{, 7788," ""192.168.6.203""",},{,,},{,,}, 2370,,{, 70, 220,,,},{, 15, 45, 27, 27,}
+LIDAR_HGSZ6S3C,LIDAR_RS_BPEARL, LDR_FRONT_RIGHT_BLIND,{, 1.6001857119088514, -0.67973049356458781, 1.5406579125902753, 2.3764482613211939, -0.00011188155184684021, -0.0017899976711810792," ""jinlog"""," ""2022-04-24 14:04:54"""," ""20220424_214713_Q2201""",}, true, 0.8,{, 7789," ""192.168.6.204""",},{,,},{,,}, 2371,,{, 140, 290,,,},{, 315, 345, 27, 27,}
 
-sn,model,antenna_extrinsics,id,x,y,z,antenna_extrinsics,format,data_port,udp,address,port,src_port,udp,tcp,address,port,tcp,data_port,command_port,udp,address,port,src_port,udp,command_port,imu_extrinsics,x,y,z,yaw,pitch,roll,calibration_engineer,calibration_time,calibration_run,imu_extrinsics,gnss_data_rate_hz,imu_data_rate_hz
-GNSS_HR28AM46,GNSS_NERTON_M2,{,,,,,},,{,{,,,,},{,,,},},{,{,,,,},},{,,,,,,,,,,},,
+sn,model,antenna_extrinsics,id,x,y,z,calibration_time,calibration_engineer,antenna_extrinsics,format,data_port,udp,address,port,src_port,udp,tcp,address,port,tcp,data_port,command_port,udp,address,port,src_port,udp,command_port,imu_extrinsics,x,y,z,yaw,pitch,roll,calibration_engineer,calibration_time,calibration_run,imu_extrinsics,gnss_data_rate_hz,imu_data_rate_hz
+GNSS_HR28AM46,GNSS_NERTON_M2,{, ANT1, -0.29, 0.18, 0.85," ""2020-06-21 13:38 PDT"""," """"",}, NEWTONM2_TEXT,{,{," ""192.168.5.111""", 3003, 7000,},{,,,},},{,{," ""192.168.5.111""", 3004, 7001,},},{, 0.12175, 0.488662, -0.589741, -0.33627708826805436, -0.020553451993680791, 0," ""wdq"""," ""2022-04-11 13:12:53""",,}, 20, 0
 
 sn,model,can_params,type,bit_rate,socketcan_ifname,enable,can_params,omc_config,gpu_id_to_device_id,gpu_id,device_id,gpu_type,gpu_id_to_device_id,ip_address,main_display,omc_config,nodes_run_config,nodes_scheme_name,nodes,node_name,name_space,node_ip,node_port,lite_launch_config_filename,timeout,nodes,nodes_run_config
-OMC_5DOOG81H,OMC_X86,{,,,,,},{,{,,,,},,,},{,,{,,,,,,,},}
+OMC_5DOOG81H,OMC_X86,{, SOCKETCAN, 500000," ""can0""", true,},{,{, GPU_0, 1, GT_RTX_3080,}," ""192.168.5.100""", false,},{," ""node_normal_10""",{," ""main_node"""," ""omc"""," ""192.168.7.100"""," ""50070"""," ""launch_run_with_ra_2.pb.txt""", 50,},}
 
-sn,model,nodes_run_config,nodes,node_name,name_space,node_ip,node_port,lite_launch_config_filename,timeout,nodes,nodes_scheme_name,nodes_run_config,obc_config,ip_address,main_display,obc_type,node_name_to_camera_id,node_name,camera_id,node_name_to_camera_id,obc_config
-OBC_SWOQQW4M,OBC_XAVIER,{,{,,,,,,,},,},{,,,,{,,,},}
-OBC_QLBJHFSH,OBC_XAVIER,{,{,,,,,,,},,},{,,,,{,,,},}
+sn,model,obc_config,ip_address,node_name_to_camera_id,node_name,camera_id,camera_id,camera_id,camera_id,camera_id,camera_id,camera_id,camera_id,node_name_to_camera_id,main_display,obc_type,obc_config,nodes_run_config,nodes_scheme_name,nodes,node_name,name_space,node_ip,node_port,lite_launch_config_filename,timeout,nodes,nodes_run_config
+OBC_SWOQQW4M,OBC_XAVIER,{,,{," ""sensor_node_1""", CAM_PBQ_REAR_LEFT, CAM_PBQ_REAR,,,,,,,}, false, OT_NVIDIA_XAVIER_AGX,},{," ""node_normal_10""",{," ""sensor_node_1"""," ""xavier"""," ""192.168.7.101"""," ""50071"""," ""launch_run_xavier.pb.txt""", 50,},}
+OBC_QLBJHFSH,OBC_XAVIER,{," ""192.168.5.102""",{," ""sensor_node_2""", CAM_PBQ_FRONT_LEFT, CAM_PBQ_FRONT_TELE, CAM_PBQ_FRONT_WIDE,,,,,,}, true, OT_NVIDIA_XAVIER_AGX,},{," ""node_normal_10""",{," ""sensor_node_2"""," ""xavier"""," ""192.168.8.101"""," ""50081"""," ""launch_run_xavier.pb.txt""", 50,},}
 
 sn,model,obu_entity,ip,port,is_send,enabled,sub_type,obu_entity
 V2X_V85UV23G,V2X_UNKNOWN,{,,,,,,}
 
 sn,model,wheel_rolling_radius
-VEHICLE_3BUUI05A,VEHICLE_MARVELR,0.3588
+VEHICLE_3BUUI05A,VEHICLE_MARVELR, 0.347
 

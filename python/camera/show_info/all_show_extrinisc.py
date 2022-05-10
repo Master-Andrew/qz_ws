@@ -26,7 +26,7 @@ def merge_dict(dict_1, dict_2):
       if type(dict_1[key]) == dict and type(dict_2[key]) == dict:
         dict_1[key] = merge_dict(dict_1[key], dict_2[key])
       elif type(dict_1[key]) == list or type(dict_2[key]) == list:
-        if type(dict_2[key])==list:
+        if type(dict_2[key]) == list:
           dict_1[key] = dict_2[key]
     else:
       dict_1[key] = dict_2[key]
