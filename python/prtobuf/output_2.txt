@@ -1,0 +1,40 @@
+people {
+  name: "safly"
+  id: 3
+  email: "safly@qq.com"
+  money: 1000.11
+  work_status: true
+  phones {
+    number: "123456"
+  }
+  maps {
+    mapfield {
+      key: 1
+      value: 1
+    }
+    mapfield {
+      key: 2
+      value: 2
+    }
+  }
+}
+people {
+  name: "safly"
+  id: 4
+  email: "safly@qq.com"
+  money: 1000.11
+  work_status: true
+  phones {
+    number: "123456"
+  }
+  maps {
+    mapfield {
+      key: 1
+      value: 1
+    }
+    mapfield {
+      key: 2
+      value: 2
+    }
+  }
+}

@@ -1,0 +1,29 @@
+syntax = "proto3";
+package tutorial;
+
+message AddressBook {
+  repeated Person people = 1;
+}
+
+message Person {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+  float money = 4;
+  bool work_status = 5;
+
+  repeated PhoneNumber phones = 6;
+  MyMessage maps = 7;
+
+}
+
+message PhoneNumber {
+    string number = 1;
+    PhoneType type = 2;
+}
+
+enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+}
