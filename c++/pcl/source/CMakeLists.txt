@@ -16,3 +16,12 @@ target_link_libraries (cloud_merge ${PCL_LIBRARIES})
 
 add_executable (lidar_calibrator lidar_calibrator_test.cpp)
 target_link_libraries (lidar_calibrator ${PCL_LIBRARIES})
+
+add_executable (icp_pointcloud icp_pointcloud.cpp)
+target_link_libraries (icp_pointcloud ${PCL_LIBRARIES})
+
+add_executable (icp_pointcloud_2 icp_pointcloud_2.cpp)
+target_link_libraries (icp_pointcloud_2 ${PCL_LIBRARIES})
+
+add_executable (ndt_pointcloud ndt_pointcloud.cpp)
+target_link_libraries (ndt_pointcloud ${PCL_LIBRARIES})

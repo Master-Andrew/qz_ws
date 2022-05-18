@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/cloud_viewer.dir/cloud_viewer.cpp.o"
+  "CMakeFiles/cloud_viewer.dir/cloud_viewer.cpp.o.d"
   "cloud_viewer"
   "cloud_viewer.pdb"
 )
