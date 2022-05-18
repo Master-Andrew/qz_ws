@@ -72,6 +72,7 @@ CMAKE_BINARY_DIR = /home/qcraft/qz_ws/c++/pcl/source/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/lidar_calibrator.dir/all
 all: CMakeFiles/cloud_merge.dir/all
 all: CMakeFiles/cloud_viewer.dir/all
 all: CMakeFiles/cloud_viewer_multi.dir/all
@@ -84,11 +85,39 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/lidar_calibrator.dir/clean
 clean: CMakeFiles/cloud_merge.dir/clean
 clean: CMakeFiles/cloud_viewer.dir/clean
 clean: CMakeFiles/cloud_viewer_multi.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/lidar_calibrator.dir
+
+# All Build rule for target.
+CMakeFiles/lidar_calibrator.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_calibrator.dir/build.make CMakeFiles/lidar_calibrator.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_calibrator.dir/build.make CMakeFiles/lidar_calibrator.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles --progress-num=7,8 "Built target lidar_calibrator"
+.PHONY : CMakeFiles/lidar_calibrator.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/lidar_calibrator.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/lidar_calibrator.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles 0
+.PHONY : CMakeFiles/lidar_calibrator.dir/rule
+
+# Convenience name for target.
+lidar_calibrator: CMakeFiles/lidar_calibrator.dir/rule
+
+.PHONY : lidar_calibrator
+
+# clean rule for target.
+CMakeFiles/lidar_calibrator.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_calibrator.dir/build.make CMakeFiles/lidar_calibrator.dir/clean
+.PHONY : CMakeFiles/lidar_calibrator.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/cloud_merge.dir

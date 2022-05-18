@@ -249,6 +249,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/lidar_calibrator.dir/DependInfo.cmake"
   "CMakeFiles/cloud_merge.dir/DependInfo.cmake"
   "CMakeFiles/cloud_viewer.dir/DependInfo.cmake"
   "CMakeFiles/cloud_viewer_multi.dir/DependInfo.cmake"

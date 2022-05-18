@@ -4,6 +4,7 @@ find_package(PCL 1.2 REQUIRED)
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
+
 add_executable (cloud_viewer cloud_viewer.cpp)
 target_link_libraries (cloud_viewer ${PCL_LIBRARIES})
 
@@ -12,3 +13,6 @@ target_link_libraries (cloud_viewer_multi ${PCL_LIBRARIES})
 
 add_executable (cloud_merge cloud_merge.cpp)
 target_link_libraries (cloud_merge ${PCL_LIBRARIES})
+
+add_executable (lidar_calibrator lidar_calibrator_test.cpp)
+target_link_libraries (lidar_calibrator ${PCL_LIBRARIES})

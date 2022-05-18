@@ -130,6 +130,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named lidar_calibrator
+
+# Build rule for target.
+lidar_calibrator: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lidar_calibrator
+.PHONY : lidar_calibrator
+
+# fast build rule for target.
+lidar_calibrator/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_calibrator.dir/build.make CMakeFiles/lidar_calibrator.dir/build
+.PHONY : lidar_calibrator/fast
+
+#=============================================================================
 # Target rules for targets named cloud_merge
 
 # Build rule for target.
@@ -249,6 +262,33 @@ cloud_viewer_multi.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cloud_viewer_multi.dir/build.make CMakeFiles/cloud_viewer_multi.dir/cloud_viewer_multi.cpp.s
 .PHONY : cloud_viewer_multi.cpp.s
 
+lidar_calibrator_test.o: lidar_calibrator_test.cpp.o
+
+.PHONY : lidar_calibrator_test.o
+
+# target to build an object file
+lidar_calibrator_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_calibrator.dir/build.make CMakeFiles/lidar_calibrator.dir/lidar_calibrator_test.cpp.o
+.PHONY : lidar_calibrator_test.cpp.o
+
+lidar_calibrator_test.i: lidar_calibrator_test.cpp.i
+
+.PHONY : lidar_calibrator_test.i
+
+# target to preprocess a source file
+lidar_calibrator_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_calibrator.dir/build.make CMakeFiles/lidar_calibrator.dir/lidar_calibrator_test.cpp.i
+.PHONY : lidar_calibrator_test.cpp.i
+
+lidar_calibrator_test.s: lidar_calibrator_test.cpp.s
+
+.PHONY : lidar_calibrator_test.s
+
+# target to generate assembly for a file
+lidar_calibrator_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_calibrator.dir/build.make CMakeFiles/lidar_calibrator.dir/lidar_calibrator_test.cpp.s
+.PHONY : lidar_calibrator_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -260,6 +300,7 @@ help:
 	@echo "... cloud_merge"
 	@echo "... cloud_viewer"
 	@echo "... cloud_viewer_multi"
+	@echo "... lidar_calibrator"
 	@echo "... cloud_merge.o"
 	@echo "... cloud_merge.i"
 	@echo "... cloud_merge.s"
@@ -269,6 +310,9 @@ help:
 	@echo "... cloud_viewer_multi.o"
 	@echo "... cloud_viewer_multi.i"
 	@echo "... cloud_viewer_multi.s"
+	@echo "... lidar_calibrator_test.o"
+	@echo "... lidar_calibrator_test.i"
+	@echo "... lidar_calibrator_test.s"
 .PHONY : help
 
 
