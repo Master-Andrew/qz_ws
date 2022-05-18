@@ -293,6 +293,8 @@ extrinsics_tmp_list = [camera_extrinsic_tmp,
                        v2x_extrinsic_tmp,
                        vehicle_intrinsic_tmp]
 
+REPAIRE = False
+
 
 def split_line(line):
   if "{" in line:
@@ -707,7 +709,8 @@ def WriteExtrinsic(car_sn, extrinsics_list):
         sn = extrinsics["sn"]
         model = extrinsics["model"]
 
-        WriteOtherParam(device, sn, car_sn, model)
+        if not REPAIRE:
+          WriteOtherParam(device, sn, car_sn, model)
 
         extrinsic_file = "{}{}/installation/{}.pb.txt".format(param_path, device, sn)
         if device == "vehicle":
@@ -735,6 +738,7 @@ def WriteVehicleParam(car_sn):
 
 
 def SNNoExist(sn):
+  print(sn)
   device = sn.split("_")[0].lower()
   file_path = param_path + device + "/installation/"
   if sn + ".pb.txt" in os.listdir(file_path):
@@ -761,7 +765,7 @@ def RewriteSN(old_car_sn, new_car_sn):
             header = row[0].split("_")[0]
             if header[0] == "H":
               header = "CAMERA"
-            elif header[0] == "P" or header[0] == "2":
+            elif header[0] == "P" or header[0] == "2"or header[0] == "Q":
               header = "LIDAR"
 
             ran_str = ''.join(random.sample(string.ascii_letters.upper() + string.digits, 8))
@@ -781,15 +785,22 @@ if __name__ == "__main__":
 
   if len(sys.argv) < 3:
     print(
-      "python3 write_extrinisc_txt_csv.py csv Qxxxx\npython3 write_extrinisc_txt_csv.py sn Qxxxx Qxxxx\npython3 write_extrinisc_txt_csv.py txt Qxxxx")
+      "python3 write_extrinisc_txt_csv.py csv Qxxxx\n"
+      "python3 write_extrinisc_txt_csv.py sn Qxxxx Qxxxx\n"
+      "python3 write_extrinisc_txt_csv.py txt Qxxxx")
     sys.exit()
 
   if sys.argv[1] == "csv":
     ReadVechicleParam(sys.argv[2])
   elif sys.argv[1] == "txt":
+    if len(sys.argv) == 4:
+      if sys.argv[3] == "repair":
+        REPAIRE = True
     WriteVehicleParam(sys.argv[2])
   elif sys.argv[1] == "sn":
     RewriteSN(sys.argv[2], sys.argv[3])
   else:
     print(
-      "python3 write_extrinisc_txt_csv.py csv Qxxxx\npython3 write_extrinisc_txt_csv.py sn Qxxxx Qxxxx\npython3 write_extrinisc_txt_csv.py txt Qxxxx")
+      "python3 write_extrinisc_txt_csv.py csv Qxxxx\n"
+      "python3 write_extrinisc_txt_csv.py sn Qxxxx Qxxxx\n"
+      "python3 write_extrinisc_txt_csv.py txt Qxxxx")
