@@ -144,8 +144,8 @@ int main(int argc, char** argv)
   cout << "loaded " << pcd_file_1 << " pcd, get " << pc_pcl_1->size() << " points!!" << endl;
   cout << "loaded " << pcd_file_2 << " pcd, get " << pc_pcl_2->size() << " points!!" << endl;
 
-  Eigen::AngleAxisf rotation(0.99, Eigen::Vector3f::UnitZ());
-  Eigen::Translation3f translation(0.2, 0.2, 0.2);
+  Eigen::AngleAxisf rotation(-2.325, Eigen::Vector3f::UnitZ());
+  Eigen::Translation3f translation(0, 0, 2);
   Eigen::Matrix4f init_rt = (translation * rotation).matrix();
 
   PointCloudTP pc_pcl_tmp(new PointCloudT);
@@ -200,6 +200,9 @@ int main(int argc, char** argv)
 
   pcl::transformPointCloud(*pc_pcl_2, *pc_pcl_2_aligen, transform);
   cout << "transformPointCloud" << endl;
+
+  pcl::io::savePCDFileASCII("aligen_plane.pcd", *pc_pcl_2_aligen);
+  cout << "save pcd file : " << endl;
 
 
   for (PointT& point : *pc_pcl_1)

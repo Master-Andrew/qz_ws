@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ndt_pointcloud.dir/ndt_pointcloud.cpp.o"
-  "CMakeFiles/ndt_pointcloud.dir/ndt_pointcloud.cpp.o.d"
   "ndt_pointcloud"
   "ndt_pointcloud.pdb"
 )

@@ -8,21 +8,31 @@
 #include <Eigen/Geometry>
 #include <vector>
 
+#include "common.h"
+
 using namespace std;
 
-using PointT = pcl::PointXYZ;
-using PointCloudT = pcl::PointCloud<pcl::PointXYZ>;
-using PointCloudTP = pcl::PointCloud<pcl::PointXYZ>::Ptr;
-using PointN = pcl::PointNormal;
-using PointCloudN = pcl::PointCloud<pcl::PointNormal>;
-using PointCloudNP = pcl::PointCloud<pcl::PointNormal>::Ptr;
-
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
+  float x, y, z, yaw, pitch, roll;
+  x = y = z = yaw = pitch = roll = 0.0;
+
   if (argc < 3)
   {
     cout << "please input two pcd file name!!!";
     return 1;
+  }
+
+  if (argc > 8)
+  {
+    x = atof(argv[3]);
+    y = atof(argv[4]);
+    z = atof(argv[5]);
+    yaw = atof(argv[6]);
+    pitch = atof(argv[7]);
+    roll = atof(argv[8]);
+    cout << "xyz, ypr" << x << " " << y << " " << z << " "
+      << yaw << " " << pitch << " " << roll << endl;
   }
 
   string pcd_file_1 = argv[1];
@@ -31,62 +41,25 @@ int main(int argc, char **argv)
 
   pcl::PointCloud<pcl::PointXYZ>::Ptr pc_pcl_1(new pcl::PointCloud<pcl::PointXYZ>);
   pcl::PointCloud<pcl::PointXYZ>::Ptr pc_pcl_2(new pcl::PointCloud<pcl::PointXYZ>);
+  pcl::PointCloud<pcl::PointXYZI>::Ptr pc_pcl_init_merge(new pcl::PointCloud<pcl::PointXYZI>);
 
-  pcl::PointCloud<pcl::PointXYZI>::Ptr pc_pcl_3(new pcl::PointCloud<pcl::PointXYZI>);
-  pcl::PointCloud<pcl::PointXYZI>::Ptr pc_pcl_4(new pcl::PointCloud<pcl::PointXYZI>);
+  pcl::PointCloud<pcl::PointXYZ>::Ptr pc_pcl_2_aligen(new pcl::PointCloud<pcl::PointXYZ>);
+  pcl::PointCloud<pcl::PointXYZI>::Ptr pc_pcl_aligen_merge(new pcl::PointCloud<pcl::PointXYZI>);
 
-  if (pcl::io::loadPCDFile<pcl::PointXYZ>(pcd_file_1, *pc_pcl_1) == -1)
-  {
-    PCL_ERROR("Couldn't read file \n");
-    return (-1);
-  }
-  if (pcl::io::loadPCDFile<pcl::PointXYZ>(pcd_file_2, *pc_pcl_2) == -1)
-  {
-    PCL_ERROR("Couldn't read file \n");
-    return (-1);
-  }
+  pc_pcl_1 = LoadPcd(pcd_file_1);
+  pc_pcl_2 = LoadPcd(pcd_file_2);
 
-  cout << "loaded " << pcd_file_1 << " pcd, get " << pc_pcl_1->size() << " points!!" << endl;
-  cout << "loaded " << pcd_file_2 << " pcd, get " << pc_pcl_2->size() << " points!!" << endl;
+  Eigen::Matrix4f init_rt;
+  GetTransform(x, y, z, yaw, pitch, roll, init_rt);
+  pcl::transformPointCloud(*pc_pcl_2, *pc_pcl_2, init_rt);
 
-  std::vector<int> indices1;
-  std::vector<int> indices2;
-  pcl::removeNaNFromPointCloud(*pc_pcl_1, *pc_pcl_1, indices1);
-  pcl::removeNaNFromPointCloud(*pc_pcl_2, *pc_pcl_2, indices2);
+  vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> pp_list = { pc_pcl_1, pc_pcl_2 };
+  pc_pcl_init_merge = MergePcd(pp_list);
 
-  cout << "loaded " << pcd_file_1 << " pcd, get " << pc_pcl_1->size() << " points!!" << endl;
-  cout << "loaded " << pcd_file_2 << " pcd, get " << pc_pcl_2->size() << " points!!" << endl;
+  string init_merge_pcl_file = pcd_file_2.substr(0, pcd_file_2.size() - 4) + "_init_merge_ndt.pcd";
+  pcl::io::savePCDFileASCII(init_merge_pcl_file, *pc_pcl_init_merge);
+  cout << "save pcd init merge file : " << init_merge_pcl_file << endl;
 
-  Eigen::AngleAxisf rotation(0.99, Eigen::Vector3f::UnitZ());
-  Eigen::Translation3f translation(0.2, 0.2, 0.2);
-  Eigen::Matrix4f init_rt = (translation * rotation).matrix();
-
-  PointCloudTP pc_pcl_tmp(new PointCloudT);
-  pcl::transformPointCloud(*pc_pcl_2, *pc_pcl_tmp, init_rt);
-
-  *pc_pcl_tmp += *pc_pcl_1;
-  // *pc_pcl_tmp += *pc_pcl_2;
-
-  pcl::io::savePCDFileASCII("tmp.pcd", *pc_pcl_tmp);
-  cout << "save pcd file : tmp.pcd" << endl;
-
-  PointCloudTP pc_pcl_2_aligen(new PointCloudT);
-
-  // pcl::IterativeClosestPoint<pcl::PointXYZ, pcl::PointXYZ> icp;
-  // icp.setInputCloud(pc_pcl_2);
-  // icp.setInputTarget(pc_pcl_1);
-
-  // // Set the max correspondence distance to 5cm (e.g., correspondences with higher distances will be ignored)
-  // icp.setMaxCorrespondenceDistance(1.0);
-  // // Set the maximum number of iterations (criterion 1)
-  // icp.setMaximumIterations(50);
-  // // Set the transformation epsilon (criterion 2)
-  // icp.setTransformationEpsilon(1e-8);
-  // // Set the euclidean distance difference epsilon (criterion 3)
-  // icp.setEuclideanFitnessEpsilon(1);
-
-  // icp.align(*pc_pcl_2_aligen);
-  // Eigen::Matrix4f transformation = icp.getFinalTransformation();
 
   pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud(new pcl::PointCloud<pcl::PointXYZ>);
   pcl::ApproximateVoxelGrid<pcl::PointXYZ> approximate_voxel_filter;
@@ -100,45 +73,18 @@ int main(int argc, char **argv)
 
   cout << "approximate_voxel_filter" << endl;
 
-  pcl::NormalDistributionsTransform<pcl::PointXYZ, pcl::PointXYZ> ndt;
-  ndt.setTransformationEpsilon(0.1);
-  ndt.setStepSize(0.5);
-  ndt.setResolution(1.0);
-  ndt.setMaximumIterations(35);
-  ndt.setInputSource(pc_pcl_2);
-  ndt.setInputTarget(pc_pcl_1);
-  // pcl::PointCloud<pcl::PointXYZ>::Ptr output_cloud(new pcl::PointCloud<pcl::PointXYZ>);
-  ndt.align(*pc_pcl_2_aligen, init_rt);
-  std::cout << "Normal Distributions Transform has converged:" << ndt.hasConverged()
-            << " score: " << ndt.getFitnessScore() << std::endl;
+  Eigen::Matrix4f  transformation;
+  DoNDT(pc_pcl_2, pc_pcl_1, pc_pcl_2_aligen, transformation, 1.0, 50);
 
-  pcl::PointXYZI pointi;
-  for (PointT &point : *pc_pcl_1)
-  {
-    pointi.x = point.x;
-    pointi.y = point.y;
-    pointi.z = point.z;
-    pointi.intensity = 1;
-    pc_pcl_3->push_back(pointi);
-  }
-  cout << "pc_pcl_3" << endl;
 
-  for (PointT &point : *pc_pcl_2_aligen)
-  {
-    pointi.x = point.x;
-    pointi.y = point.y;
-    pointi.z = point.z;
-    pointi.intensity = 2;
-    pc_pcl_4->push_back(pointi);
-  }
-  cout << "pc_pcl_4" << endl;
+  string aligen_pcl_file = pcd_file_2.substr(0, pcd_file_2.size() - 4) + "_aligen_ndt.pcd";
+  pcl::io::savePCDFileASCII(aligen_pcl_file, *pc_pcl_2_aligen);
+  cout << "save pcd aligen  file : " << aligen_pcl_file << endl;
 
-  *pc_pcl_3 += *pc_pcl_4;
-
-  pcl::io::savePCDFileASCII("tmp_2.pcd", *pc_pcl_3);
-  cout << "save pcd file : " << endl;
-
-  return (0);
+  vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> pp_list_2 = { pc_pcl_1, pc_pcl_2_aligen };
+  pc_pcl_aligen_merge = MergePcd(pp_list_2);
+  string aligen_merge_pcl_file = pcd_file_2.substr(0, pcd_file_2.size() - 4) + "_aligen_merge_ndt.pcd";
+  pcl::io::savePCDFileASCII(aligen_merge_pcl_file, *pc_pcl_aligen_merge);
+  cout << "save pcd file : " << aligen_merge_pcl_file << endl;
 }
 
-// Eigen::Matrix4f initial_estimate = init_transform.mat().cast<float>();

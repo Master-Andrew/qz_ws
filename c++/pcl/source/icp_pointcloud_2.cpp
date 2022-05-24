@@ -13,7 +13,7 @@ typedef pcl::PointCloud<PointT> PointCloudT;
 
 bool next_iteration = false;
 
-void print4x4Matrix(const Eigen::Matrix4d &matrix)
+void print4x4Matrix(const Eigen::Matrix4d& matrix)
 {
   printf("Rotation matrix :\n");
   printf("    | %6.3f %6.3f %6.3f | \n", matrix(0, 0), matrix(0, 1), matrix(0, 2));
@@ -23,13 +23,13 @@ void print4x4Matrix(const Eigen::Matrix4d &matrix)
   printf("t = < %6.3f, %6.3f, %6.3f >\n\n", matrix(0, 3), matrix(1, 3), matrix(2, 3));
 }
 
-void keyboardEventOccurred(const pcl::visualization::KeyboardEvent &event, void *nothing)
+void keyboardEventOccurred(const pcl::visualization::KeyboardEvent& event, void* nothing)
 {
   if (event.getKeySym() == "space" && event.keyDown())
     next_iteration = true;
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
   // The point clouds we will be using
   PointCloudT::Ptr cloud_in(new PointCloudT);  // Original point cloud
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
   }
 
   std::cout << "\nLoaded file " << argv[1] << " (" << cloud_in->size() << " points) in " << time.toc() << " ms\n"
-            << std::endl;
+    << std::endl;
 
   std::vector<int> indices1;
   pcl::removeNaNFromPointCloud(*cloud_in, *cloud_in, indices1);
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
   std::vector<int> indices2;
   pcl::removeNaNFromPointCloud(*cloud_icp, *cloud_icp, indices2);
 
-  Eigen::AngleAxisf rotation(1, Eigen::Vector3f::UnitZ());
+  Eigen::AngleAxisf rotation(0, Eigen::Vector3f::UnitZ());
   Eigen::Translation3f translation(0, 0, 0);
   Eigen::Matrix4f init_rt = (translation * rotation).matrix();
 
@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
 
   // // Executing the transformation
   // pcl::transformPointCloud(*cloud_in, *cloud_icp, transformation_matrix);
-  *cloud_tr = *cloud_icp; // We backup cloud_icp into cloud_tr for later use
+  * cloud_tr = *cloud_icp; // We backup cloud_icp into cloud_tr for later use
 
   // The Iterative Closest Point algorithm
   time.tic();
@@ -135,7 +135,7 @@ int main(int argc, char *argv[])
 
   // Original point cloud is white
   pcl::visualization::PointCloudColorHandlerCustom<PointT> cloud_in_color_h(cloud_in, (int)255 * txt_gray_lvl, (int)255 * txt_gray_lvl,
-                                                                            (int)255 * txt_gray_lvl);
+    (int)255 * txt_gray_lvl);
   viewer.addPointCloud(cloud_in, cloud_in_color_h, "cloud_in_v1", v1);
   viewer.addPointCloud(cloud_in, cloud_in_color_h, "cloud_in_v2", v2);
 
@@ -165,7 +165,7 @@ int main(int argc, char *argv[])
   viewer.setSize(1280, 1024); // Visualiser window size
 
   // Register keyboard callback :
-  viewer.registerKeyboardCallback(&keyboardEventOccurred, (void *)NULL);
+  viewer.registerKeyboardCallback(&keyboardEventOccurred, (void*)NULL);
 
   // Display the visualiser
   while (!viewer.wasStopped())
@@ -179,6 +179,9 @@ int main(int argc, char *argv[])
       time.tic();
       icp.align(*cloud_icp);
       std::cout << "Applied 1 ICP iteration in " << time.toc() << " ms" << std::endl;
+
+      pcl::io::savePCDFileASCII("aligen_icp_2.pcd", *cloud_icp);
+      cout << "save pcd file : " << endl;
 
       if (icp.hasConverged())
       {
