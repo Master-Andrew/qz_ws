@@ -5,12 +5,6 @@ include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
-add_executable (cloud_viewer cloud_viewer.cpp)
-target_link_libraries (cloud_viewer ${PCL_LIBRARIES})
-
-add_executable (cloud_viewer_multi cloud_viewer_multi.cpp)
-target_link_libraries (cloud_viewer_multi ${PCL_LIBRARIES})
-
 add_executable (cloud_merge cloud_merge.cpp)
 target_link_libraries (cloud_merge ${PCL_LIBRARIES})
 

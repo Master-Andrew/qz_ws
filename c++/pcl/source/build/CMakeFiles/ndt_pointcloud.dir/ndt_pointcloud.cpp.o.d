@@ -2247,4 +2247,171 @@ CMakeFiles/ndt_pointcloud.dir/ndt_pointcloud.cpp.o: \
  /usr/include/eigen3/unsupported/Eigen/src/NonLinearOptimization/HybridNonLinearSolver.h \
  /usr/include/eigen3/unsupported/Eigen/src/NonLinearOptimization/LevenbergMarquardt.h \
  /usr/include/pcl-1.8/pcl/registration/impl/ndt.hpp \
- /usr/include/pcl-1.8/pcl/filters/approximate_voxel_grid.h
+ /usr/include/pcl-1.8/pcl/filters/approximate_voxel_grid.h \
+ /home/qcraft/qz_ws/c++/pcl/source/common.h \
+ /usr/include/pcl-1.8/pcl/visualization/cloud_viewer.h \
+ /usr/include/pcl-1.8/pcl/visualization/pcl_visualizer.h \
+ /usr/include/pcl-1.8/pcl/visualization/common/actor_map.h \
+ /usr/include/pcl-1.8/pcl/visualization/point_cloud_handlers.h \
+ /usr/include/pcl-1.8/pcl/visualization/point_cloud_geometry_handlers.h \
+ /usr/include/vtk-6.3/vtkSmartPointer.h \
+ /usr/include/vtk-6.3/vtkSmartPointerBase.h \
+ /usr/include/vtk-6.3/vtkCommonCoreModule.h \
+ /usr/include/vtk-6.3/vtkObjectBase.h /usr/include/vtk-6.3/vtkIndent.h \
+ /usr/include/vtk-6.3/vtkSystemIncludes.h \
+ /usr/include/vtk-6.3/vtkWin32Header.h \
+ /usr/include/vtk-6.3/vtkConfigure.h \
+ /usr/include/vtk-6.3/vtkVersionMacros.h /usr/include/vtk-6.3/vtkABI.h \
+ /usr/include/vtk-6.3/vtkIOStream.h /usr/include/vtk-6.3/vtkType.h \
+ /usr/include/vtk-6.3/vtkOStreamWrapper.h \
+ /usr/include/vtk-6.3/vtkOStrStreamWrapper.h \
+ /usr/include/vtk-6.3/vtkAtomicTypes.h /usr/include/vtk-6.3/vtkAtomic.h \
+ /usr/include/vtk-6.3/vtkAtomicTypeConcepts.h \
+ /usr/include/vtk-6.3/vtkPoints.h /usr/include/vtk-6.3/vtkObject.h \
+ /usr/include/vtk-6.3/vtkSetGet.h /usr/include/vtk-6.3/vtkTimeStamp.h \
+ /usr/include/vtk-6.3/vtkWeakPointerBase.h \
+ /usr/include/vtk-6.3/vtkDataArray.h \
+ /usr/include/vtk-6.3/vtkAbstractArray.h \
+ /usr/include/vtk-6.3/vtkVariant.h /usr/include/vtk-6.3/vtkStdString.h \
+ /usr/include/vtk-6.3/vtkUnicodeString.h \
+ /usr/include/vtk-6.3/vtkVariantInlineOperators.h \
+ /usr/include/vtk-6.3/vtkFloatArray.h \
+ /usr/include/vtk-6.3/vtkDataArrayTemplate.h \
+ /usr/include/vtk-6.3/vtkTypedDataArray.h \
+ /usr/include/vtk-6.3/vtkTypeTemplate.h \
+ /usr/include/vtk-6.3/vtkTypeTraits.h \
+ /usr/include/vtk-6.3/vtkTypedDataArrayIterator.h \
+ /usr/include/vtk-6.3/vtkTypedDataArray.txx \
+ /usr/include/pcl-1.8/pcl/visualization/point_cloud_color_handlers.h \
+ /usr/include/pcl-1.8/pcl/visualization/common/common.h \
+ /usr/include/pcl-1.8/pcl/visualization/eigen.h \
+ /usr/include/vtk-6.3/vtkMatrix4x4.h \
+ /usr/include/vtk-6.3/vtkCommonMathModule.h \
+ /usr/include/vtk-6.3/vtkLookupTable.h \
+ /usr/include/vtk-6.3/vtkScalarsToColors.h \
+ /usr/include/vtk-6.3/vtkUnsignedCharArray.h \
+ /usr/include/pcl-1.8/pcl/visualization/common/impl/common.hpp \
+ /usr/include/vtk-6.3/vtkDataArray.h \
+ /usr/include/vtk-6.3/vtkUnsignedCharArray.h \
+ /usr/include/pcl-1.8/pcl/visualization/impl/point_cloud_color_handlers.hpp \
+ /usr/include/pcl-1.8/pcl/common/colors.h \
+ /usr/include/vtk-6.3/vtkLODActor.h \
+ /usr/include/vtk-6.3/vtkRenderingLODModule.h \
+ /usr/include/vtk-6.3/vtkFiltersModelingModule.h \
+ /usr/include/vtk-6.3/vtkFiltersGeneralModule.h \
+ /usr/include/vtk-6.3/vtkFiltersCoreModule.h \
+ /usr/include/vtk-6.3/vtkFiltersSourcesModule.h \
+ /usr/include/vtk-6.3/vtkRenderingCoreModule.h \
+ /usr/include/vtk-6.3/vtkAutoInit.h \
+ /usr/include/vtk-6.3/vtkDebugLeaksManager.h \
+ /usr/include/vtk-6.3/vtkActor.h /usr/include/vtk-6.3/vtkProp3D.h \
+ /usr/include/vtk-6.3/vtkProp.h \
+ /usr/include/pcl-1.8/pcl/visualization/boost.h \
+ /usr/include/pcl-1.8/pcl/visualization/point_picking_event.h \
+ /usr/include/vtk-6.3/vtkCommand.h \
+ /usr/include/pcl-1.8/pcl/visualization/area_picking_event.h \
+ /usr/include/pcl-1.8/pcl/visualization/interactor_style.h \
+ /usr/include/pcl-1.8/pcl/visualization/common/ren_win_interact_map.h \
+ /usr/include/pcl-1.8/pcl/visualization/keyboard_event.h \
+ /usr/include/pcl-1.8/pcl/visualization/mouse_event.h \
+ /usr/include/vtk-6.3/vtkInteractorStyleRubberBandPick.h \
+ /usr/include/vtk-6.3/vtkInteractionStyleModule.h \
+ /usr/include/vtk-6.3/vtkInteractorStyleTrackballCamera.h \
+ /usr/include/vtk-6.3/vtkInteractorStyle.h \
+ /usr/include/vtk-6.3/vtkInteractorObserver.h \
+ /usr/include/pcl-1.8/pcl/visualization/impl/pcl_visualizer.hpp \
+ /usr/include/vtk-6.3/vtkVersion.h /usr/include/vtk-6.3/vtkCellArray.h \
+ /usr/include/vtk-6.3/vtkCommonDataModelModule.h \
+ /usr/include/vtk-6.3/vtkIdTypeArray.h /usr/include/vtk-6.3/vtkCell.h \
+ /usr/include/vtk-6.3/vtkIdList.h /usr/include/vtk-6.3/vtkCellType.h \
+ /usr/include/vtk-6.3/vtkLeaderActor2D.h \
+ /usr/include/vtk-6.3/vtkRenderingAnnotationModule.h \
+ /usr/include/vtk-6.3/vtkRenderingFreeTypeModule.h \
+ /usr/include/vtk-6.3/vtkActor2D.h /usr/include/vtk-6.3/vtkCoordinate.h \
+ /usr/include/vtk-6.3/vtkVectorText.h \
+ /usr/include/vtk-6.3/vtkPolyDataAlgorithm.h \
+ /usr/include/vtk-6.3/vtkCommonExecutionModelModule.h \
+ /usr/include/vtk-6.3/vtkAlgorithm.h /usr/include/vtk-6.3/vtkPolyData.h \
+ /usr/include/vtk-6.3/vtkPointSet.h /usr/include/vtk-6.3/vtkDataSet.h \
+ /usr/include/vtk-6.3/vtkDataObject.h /usr/include/vtk-6.3/vtkPoints.h \
+ /usr/include/vtk-6.3/vtkCellTypes.h /usr/include/vtk-6.3/vtkIntArray.h \
+ /usr/include/vtk-6.3/vtkCellLinks.h \
+ /usr/include/vtk-6.3/vtkAlgorithmOutput.h \
+ /usr/include/vtk-6.3/vtkFollower.h /usr/include/vtk-6.3/vtkMath.h \
+ /usr/include/vtk-6.3/vtkMathConfigure.h \
+ /usr/include/vtk-6.3/vtkSphereSource.h \
+ /usr/include/vtk-6.3/vtkProperty2D.h \
+ /usr/include/vtk-6.3/vtkDataSetSurfaceFilter.h \
+ /usr/include/vtk-6.3/vtkFiltersGeometryModule.h \
+ /usr/include/vtk-6.3/vtkPointData.h \
+ /usr/include/vtk-6.3/vtkDataSetAttributes.h \
+ /usr/include/vtk-6.3/vtkFieldData.h \
+ /usr/include/vtk-6.3/vtkPolyDataMapper.h \
+ /usr/include/vtk-6.3/vtkMapper.h \
+ /usr/include/vtk-6.3/vtkAbstractMapper3D.h \
+ /usr/include/vtk-6.3/vtkAbstractMapper.h \
+ /usr/include/vtk-6.3/vtkSmartPointer.h /usr/include/vtk-6.3/vtkTexture.h \
+ /usr/include/vtk-6.3/vtkImageAlgorithm.h \
+ /usr/include/vtk-6.3/vtkProperty.h /usr/include/vtk-6.3/vtkMapper.h \
+ /usr/include/vtk-6.3/vtkCellData.h \
+ /usr/include/vtk-6.3/vtkDataSetMapper.h \
+ /usr/include/vtk-6.3/vtkRenderer.h /usr/include/vtk-6.3/vtkViewport.h \
+ /usr/include/vtk-6.3/vtkVolumeCollection.h \
+ /usr/include/vtk-6.3/vtkPropCollection.h \
+ /usr/include/vtk-6.3/vtkCollection.h /usr/include/vtk-6.3/vtkVolume.h \
+ /usr/include/vtk-6.3/vtkActorCollection.h \
+ /usr/include/vtk-6.3/vtkRendererCollection.h \
+ /usr/include/vtk-6.3/vtkRenderer.h \
+ /usr/include/vtk-6.3/vtkAppendPolyData.h \
+ /usr/include/vtk-6.3/vtkTextProperty.h \
+ /usr/include/vtk-6.3/vtkLineSource.h \
+ /usr/include/pcl-1.8/pcl/visualization/common/shapes.h \
+ /usr/include/pcl-1.8/pcl/geometry/planar_polygon.h \
+ /usr/include/pcl-1.8/pcl/visualization/common/impl/shapes.hpp \
+ /usr/include/vtk-6.3/vtkPolygon.h \
+ /usr/include/vtk-6.3/vtkUnstructuredGrid.h \
+ /usr/include/vtk-6.3/vtkUnstructuredGridBase.h \
+ /usr/include/pcl-1.8/pcl/registration/icp.h \
+ /usr/include/pcl-1.8/pcl/sample_consensus/ransac.h \
+ /usr/include/pcl-1.8/pcl/sample_consensus/sac.h \
+ /usr/include/pcl-1.8/pcl/sample_consensus/boost.h \
+ /usr/include/pcl-1.8/pcl/sample_consensus/sac_model.h \
+ /usr/include/pcl-1.8/pcl/sample_consensus/model_types.h \
+ /usr/include/pcl-1.8/pcl/sample_consensus/sac_model_registration.h \
+ /usr/include/pcl-1.8/pcl/sample_consensus/eigen.h \
+ /usr/include/pcl-1.8/pcl/sample_consensus/impl/sac_model_registration.hpp \
+ /usr/include/pcl-1.8/pcl/common/point_operators.h \
+ /usr/include/pcl-1.8/pcl/registration/transformation_estimation_svd.h \
+ /usr/include/pcl-1.8/pcl/registration/impl/transformation_estimation_svd.hpp \
+ /usr/include/pcl-1.8/pcl/registration/transformation_estimation_point_to_plane_lls.h \
+ /usr/include/pcl-1.8/pcl/registration/warp_point_rigid.h \
+ /usr/include/pcl-1.8/pcl/registration/impl/transformation_estimation_point_to_plane_lls.hpp \
+ /usr/include/pcl-1.8/pcl/registration/default_convergence_criteria.h \
+ /usr/include/pcl-1.8/pcl/registration/convergence_criteria.h \
+ /usr/include/pcl-1.8/pcl/registration/impl/default_convergence_criteria.hpp \
+ /usr/include/pcl-1.8/pcl/registration/impl/icp.hpp \
+ /usr/include/pcl-1.8/pcl/features/normal_3d.h \
+ /usr/include/pcl-1.8/pcl/features/feature.h \
+ /usr/include/pcl-1.8/pcl/features/impl/feature.hpp \
+ /usr/include/pcl-1.8/pcl/search/pcl_search.h \
+ /usr/include/pcl-1.8/pcl/search/octree.h \
+ /usr/include/pcl-1.8/pcl/octree/octree_search.h \
+ /usr/include/pcl-1.8/pcl/octree/octree_pointcloud.h \
+ /usr/include/pcl-1.8/pcl/octree/octree_base.h \
+ /usr/include/pcl-1.8/pcl/octree/octree_nodes.h \
+ /usr/include/pcl-1.8/pcl/octree/octree_container.h \
+ /usr/include/pcl-1.8/pcl/octree/octree_container.h \
+ /usr/include/pcl-1.8/pcl/octree/octree_key.h \
+ /usr/include/pcl-1.8/pcl/octree/octree_iterator.h \
+ /usr/include/pcl-1.8/pcl/octree/impl/octree_iterator.hpp \
+ /usr/include/pcl-1.8/pcl/search/organized.h /usr/include/c++/7/queue \
+ /usr/include/c++/7/bits/stl_queue.h \
+ /usr/include/pcl-1.8/pcl/common/projection_matrix.h \
+ /usr/include/pcl-1.8/pcl/common/impl/projection_matrix.hpp \
+ /usr/include/pcl-1.8/pcl/kdtree/impl/kdtree_flann.hpp \
+ /usr/include/pcl-1.8/pcl/registration/transformation_estimation_point_to_plane.h \
+ /usr/include/pcl-1.8/pcl/registration/transformation_estimation_lm.h \
+ /usr/include/pcl-1.8/pcl/registration/distances.h \
+ /usr/include/pcl-1.8/pcl/registration/impl/transformation_estimation_lm.hpp \
+ /usr/include/pcl-1.8/pcl/registration/warp_point_rigid_6d.h \
+ /home/qcraft/qz_ws/c++/pcl/source/registration_common.h

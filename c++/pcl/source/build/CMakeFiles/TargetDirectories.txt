@@ -1,10 +1,8 @@
-/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/manual_registration.dir
-/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/edit_cache.dir
-/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/ndt_pointcloud.dir
-/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/cloud_viewer_multi.dir
-/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/rebuild_cache.dir
-/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/cloud_viewer.dir
-/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/lidar_calibrator.dir
 /home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/cloud_merge.dir
+/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/lidar_calibrator.dir
 /home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/icp_pointcloud.dir
 /home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/icp_pointcloud_2.dir
+/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/ndt_pointcloud.dir
+/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/manual_registration.dir
+/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/edit_cache.dir
+/home/qcraft/qz_ws/c++/pcl/source/build/CMakeFiles/rebuild_cache.dir

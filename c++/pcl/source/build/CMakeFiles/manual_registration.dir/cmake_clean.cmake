@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/manual_registration.dir/manual_registration.cpp.o"
+  "CMakeFiles/manual_registration.dir/manual_registration.cpp.o.d"
   "manual_registration"
   "manual_registration.pdb"
 )

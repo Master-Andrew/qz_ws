@@ -15,11 +15,11 @@
 #include <vector>
 
 #include "common.h"
+#include "registration_common.h"
 
 using namespace std;
 
-
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
   float x, y, z, yaw, pitch, roll;
   x = y = z = yaw = pitch = roll = 0.0;
@@ -39,7 +39,7 @@ int main(int argc, char** argv)
     pitch = atof(argv[7]);
     roll = atof(argv[8]);
     cout << "xyz, ypr" << x << " " << y << " " << z << " "
-      << yaw << " " << pitch << " " << roll << endl;
+         << yaw << " " << pitch << " " << roll << endl;
   }
 
   string pcd_file_1 = argv[1];
@@ -55,27 +55,25 @@ int main(int argc, char** argv)
   pc_pcl_1 = LoadPcd(pcd_file_1);
   pc_pcl_2 = LoadPcd(pcd_file_2);
 
-
   Eigen::Matrix4f init_rt;
   GetTransform(x, y, z, yaw, pitch, roll, init_rt);
   pcl::transformPointCloud(*pc_pcl_2, *pc_pcl_2, init_rt);
 
-  vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> pp_list = { pc_pcl_1, pc_pcl_2 };
+  vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> pp_list = {pc_pcl_1, pc_pcl_2};
   pc_pcl_init_merge = MergePcd(pp_list);
 
   string init_merge_pcl_file = pcd_file_2.substr(0, pcd_file_2.size() - 4) + "_init_merge_icp.pcd";
   pcl::io::savePCDFileASCII(init_merge_pcl_file, *pc_pcl_init_merge);
   cout << "save pcd init merge file : " << init_merge_pcl_file << endl;
 
-
-  Eigen::Matrix4f  transformation;
+  Eigen::Matrix4f transformation;
   DoICP(pc_pcl_2, pc_pcl_1, pc_pcl_2_aligen, transformation, 1.0, 50);
 
   string aligen_pcl_file = pcd_file_2.substr(0, pcd_file_2.size() - 4) + "_aligen_icp.pcd";
   pcl::io::savePCDFileASCII(aligen_pcl_file, *pc_pcl_2_aligen);
   cout << "save pcd aligen  file : " << aligen_pcl_file << endl;
 
-  vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> pp_list_2 = { pc_pcl_1, pc_pcl_2_aligen };
+  vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> pp_list_2 = {pc_pcl_1, pc_pcl_2_aligen};
   pc_pcl_aligen_merge = MergePcd(pp_list_2);
   string aligen_merge_pcl_file = pcd_file_2.substr(0, pcd_file_2.size() - 4) + "_aligen_merge_icp.pcd";
   pcl::io::savePCDFileASCII(aligen_merge_pcl_file, *pc_pcl_aligen_merge);
@@ -83,5 +81,3 @@ int main(int argc, char** argv)
 
   return (0);
 }
-
-
