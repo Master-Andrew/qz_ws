@@ -18,7 +18,7 @@
 
 using namespace std;
 
-pcl::PointCloud<pcl::PointXYZ>::Ptr LoadPcd(string pcd_file)
+pcl::PointCloud<pcl::PointXYZ>::Ptr LoadPcd(string pcd_file, bool remove_nan = true)
 {
   pcl::PointCloud<pcl::PointXYZ>::Ptr pc(new pcl::PointCloud<pcl::PointXYZ>);
 
@@ -28,12 +28,15 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr LoadPcd(string pcd_file)
     return (pc);
   }
 
-  cout << "loaded " << pcd_file << " pcd, get " << pc->size() << " points!!" << endl;
+  // cout << "loaded " << pcd_file << " pcd, get " << pc->size() << " points!!" << endl;
 
-  std::vector<int> indices;
-  pcl::removeNaNFromPointCloud(*pc, *pc, indices);
+  if (remove_nan)
+  {
+    std::vector<int> indices;
+    pcl::removeNaNFromPointCloud(*pc, *pc, indices);
+  }
 
-  cout << "filter nan " << pcd_file << " pcd, get " << pc->size() << " points!!" << endl;
+  // cout << "filter nan " << pcd_file << " pcd, get " << pc->size() << " points!!" << endl;
 
   return pc;
 }
@@ -47,7 +50,7 @@ pcl::PointCloud<pcl::PointXYZI>::Ptr MergePcd(vector<P> pp_list)
 
   for (auto pp : pp_list)
   {
-    for (auto &point : *pp)
+    for (auto& point : *pp)
     {
       pointi.x = point.x;
       pointi.y = point.y;
@@ -63,14 +66,14 @@ pcl::PointCloud<pcl::PointXYZI>::Ptr MergePcd(vector<P> pp_list)
 }
 
 void GetTransform(const float x, const float y, const float z,
-                  const float yaw, const float pitch, const float roll, Eigen::Matrix4f &translation)
+  const float yaw, const float pitch, const float roll, Eigen::Matrix4f& translation)
 {
   translation = (Eigen::Translation3f(x, y, z) * Eigen::AngleAxisf(yaw, Eigen::Vector3f::UnitZ()) * Eigen::AngleAxisf(pitch, Eigen::Vector3f::UnitY()) * Eigen::AngleAxisf(roll, Eigen::Vector3f::UnitX())).matrix();
 }
 
 // https://blog.csdn.net/lemonxiaoxiao/article/details/123596114
-void GetPose(const Eigen::Matrix4f translation, float &x, float &y, float &z,
-             float &yaw, float &pitch, float &roll)
+void GetPose(const Eigen::Matrix4f translation, float& x, float& y, float& z,
+  float& yaw, float& pitch, float& roll)
 {
   x = translation(0, 3);
   y = translation(1, 3);
@@ -82,7 +85,7 @@ void GetPose(const Eigen::Matrix4f translation, float &x, float &y, float &z,
   roll = euler_angle(2);
 }
 
-void viewerOneOff(pcl::visualization::PCLVisualizer &viewer)
+void viewerOneOff(pcl::visualization::PCLVisualizer& viewer)
 {
   viewer.setBackgroundColor(1.0, 0.5, 1.0);
   pcl::PointXYZ o;
@@ -92,7 +95,7 @@ void viewerOneOff(pcl::visualization::PCLVisualizer &viewer)
   viewer.addSphere(o, 0.25, "sphere", 0);
 }
 
-void viewerPsycho(pcl::visualization::PCLVisualizer &viewer)
+void viewerPsycho(pcl::visualization::PCLVisualizer& viewer)
 {
   static unsigned count = 0;
   std::stringstream ss;
@@ -106,13 +109,11 @@ void viewerPsycho(pcl::visualization::PCLVisualizer &viewer)
 template <typename T>
 void showPointcloud(T input, string windows_name)
 {
-  int tmp = 0;
   pcl::visualization::CloudViewer viewer(windows_name);
   viewer.showCloud(input);
-  viewer.runOnVisualizationThreadOnce(viewerOneOff);
-  viewer.runOnVisualizationThread(viewerPsycho);
+  // viewer.runOnVisualizationThreadOnce(viewerOneOff);
+  // viewer.runOnVisualizationThread(viewerPsycho);
   while (!viewer.wasStopped())
   {
-    tmp += 1;
   }
 }

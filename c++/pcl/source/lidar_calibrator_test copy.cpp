@@ -9,12 +9,14 @@
 #include <Eigen/Core>
 #include <Eigen/Geometry>
 #include <vector>
+#include <stdlib.h>
 
 #include "common.h"
+#include "registration_common.h"
 
 using namespace std;
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
   float x, y, z, yaw, pitch, roll;
   x = y = z = yaw = pitch = roll = 0.0;
@@ -34,7 +36,7 @@ int main(int argc, char **argv)
     pitch = atof(argv[7]);
     roll = atof(argv[8]);
     cout << "xyz, ypr" << x << " " << y << " " << z << " "
-         << yaw << " " << pitch << " " << roll << endl;
+      << yaw << " " << pitch << " " << roll << endl;
   }
 
   string pcd_file_1 = argv[1];
@@ -54,26 +56,31 @@ int main(int argc, char **argv)
   GetTransform(x, y, z, yaw, pitch, roll, init_rt);
   pcl::transformPointCloud(*pc_pcl_2, *pc_pcl_2, init_rt);
 
-  vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> pp_list = {pc_pcl_1, pc_pcl_2};
+  vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> pp_list = { pc_pcl_1, pc_pcl_2 };
   pc_pcl_init_merge = MergePcd(pp_list);
 
-  string init_merge_pcl_file = pcd_file_2.substr(0, pcd_file_2.size() - 4) + "_init_merge_icp.pcd";
+  string init_merge_pcl_file = pcd_file_2.substr(0, pcd_file_2.size() - 4) + "_init_merge.pcd";
   pcl::io::savePCDFileASCII(init_merge_pcl_file, *pc_pcl_init_merge);
   cout << "save pcd init merge file : " << init_merge_pcl_file << endl;
+  system(("pcl_viewer " + init_merge_pcl_file).c_str());
 
   Eigen::Matrix4f transformation;
 
+  // do registration
   DoICP(pc_pcl_2, pc_pcl_1, pc_pcl_2_aligen, transformation, 1.0, 50);
+  // do registration
 
-  string aligen_pcl_file = pcd_file_2.substr(0, pcd_file_2.size() - 4) + "_aligen_icp.pcd";
+  string aligen_pcl_file = pcd_file_2.substr(0, pcd_file_2.size() - 4) + "_aligen.pcd";
   pcl::io::savePCDFileASCII(aligen_pcl_file, *pc_pcl_2_aligen);
   cout << "save pcd aligen  file : " << aligen_pcl_file << endl;
+  // system(("pcl_viewer " + aligen_pcl_file).c_str());
 
-  vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> pp_list_2 = {pc_pcl_1, pc_pcl_2_aligen};
+  vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> pp_list_2 = { pc_pcl_1, pc_pcl_2_aligen };
   pc_pcl_aligen_merge = MergePcd(pp_list_2);
-  string aligen_merge_pcl_file = pcd_file_2.substr(0, pcd_file_2.size() - 4) + "_aligen_merge_icp.pcd";
+  string aligen_merge_pcl_file = pcd_file_2.substr(0, pcd_file_2.size() - 4) + "_aligen_merge.pcd";
   pcl::io::savePCDFileASCII(aligen_merge_pcl_file, *pc_pcl_aligen_merge);
   cout << "save pcd file : " << aligen_merge_pcl_file << endl;
+  system(("pcl_viewer " + aligen_merge_pcl_file).c_str());
 
   return (0);
 }

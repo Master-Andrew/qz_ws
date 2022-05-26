@@ -9,7 +9,6 @@
 #include <pcl/console/time.h> // TicToc
 #include <string>
 
-#include "common.h"
 #include "registration_common.h"
 
 using namespace std;
@@ -24,7 +23,7 @@ float r_step = 0.005;
 
 float x, y, z, yaw, pitch, roll;
 
-void print4x4Matrix(const Eigen::Matrix4d &matrix)
+void print4x4Matrix(const Eigen::Matrix4d& matrix)
 {
   printf("Rotation matrix :\n");
   printf("    | %6.3f %6.3f %6.3f | \n", matrix(0, 0), matrix(0, 1), matrix(0, 2));
@@ -34,7 +33,7 @@ void print4x4Matrix(const Eigen::Matrix4d &matrix)
   printf("t = < %6.3f, %6.3f, %6.3f >\n\n", matrix(0, 3), matrix(1, 3), matrix(2, 3));
 }
 
-void keyboardEventOccurred(const pcl::visualization::KeyboardEvent &event, void *nothing)
+void keyboardEventOccurred(const pcl::visualization::KeyboardEvent& event, void* nothing)
 {
   if (event.getKeySym() == "y" && event.keyDown())
   {
@@ -108,7 +107,7 @@ void keyboardEventOccurred(const pcl::visualization::KeyboardEvent &event, void 
   }
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
   // The point clouds we will be using
   PointCloudT::Ptr pc_target(new PointCloudT); // Original point cloud
@@ -133,7 +132,7 @@ int main(int argc, char *argv[])
     pitch = atof(argv[7]);
     roll = atof(argv[8]);
     cout << "xyz, ypr : " << x << " " << y << " " << z << " "
-         << yaw << " " << pitch << " " << roll << endl;
+      << yaw << " " << pitch << " " << roll << endl;
   }
 
   string pcd_target_file = argv[1];
@@ -165,7 +164,7 @@ int main(int argc, char *argv[])
 
   // Original point cloud is white
   pcl::visualization::PointCloudColorHandlerCustom<PointT> cloud_in_color_h(pc_target, (int)255 * txt_gray_lvl, (int)255 * txt_gray_lvl,
-                                                                            (int)255 * txt_gray_lvl);
+    (int)255 * txt_gray_lvl);
   viewer.addPointCloud(pc_target, cloud_in_color_h, "cloud_in_v1", v1);
   viewer.addPointCloud(pc_target, cloud_in_color_h, "cloud_in_v2", v2);
 
@@ -183,7 +182,7 @@ int main(int argc, char *argv[])
 
   std::stringstream ss;
   ss << "xyz, ypr" << x << " " << y << " " << z << " "
-     << yaw << " " << pitch << " " << roll << endl;
+    << yaw << " " << pitch << " " << roll << endl;
   std::string translation_result = ss.str();
   viewer.addText(translation_result, 10, 60, 16, txt_gray_lvl, txt_gray_lvl, txt_gray_lvl, "translation_result", v2);
 
@@ -196,7 +195,7 @@ int main(int argc, char *argv[])
   viewer.setSize(1280, 1024); // Visualiser window size
 
   // Register keyboard callback :
-  viewer.registerKeyboardCallback(&keyboardEventOccurred, (void *)NULL);
+  viewer.registerKeyboardCallback(&keyboardEventOccurred, (void*)NULL);
 
   string manual_aligen_file = pcd_source_file.substr(0, pcd_source_file.size() - 4) + "_manual_aligen.pcd";
 
@@ -215,11 +214,11 @@ int main(int argc, char *argv[])
       cout << "save pcd file : " << manual_aligen_file << endl;
 
       cout << "xyz, ypr : " << x << " " << y << " " << z << " "
-           << yaw << " " << pitch << " " << roll << endl;
+        << yaw << " " << pitch << " " << roll << endl;
 
       ss.str("");
       ss << "xyz, ypr : " << x << " " << y << " " << z << " "
-         << yaw << " " << pitch << " " << roll << endl;
+        << yaw << " " << pitch << " " << roll << endl;
       std::string translation_result = ss.str();
       viewer.updateText(translation_result, 10, 60, 16, txt_gray_lvl, txt_gray_lvl, txt_gray_lvl, "translation_result");
       viewer.updatePointCloud(pc_aligen, cloud_icp_color_h, "cloud_icp_v2");

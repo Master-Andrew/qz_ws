@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/icp_pointcloud_2.dir/icp_pointcloud_2.cpp.o"
-  "CMakeFiles/icp_pointcloud_2.dir/icp_pointcloud_2.cpp.o.d"
   "icp_pointcloud_2"
   "icp_pointcloud_2.pdb"
 )

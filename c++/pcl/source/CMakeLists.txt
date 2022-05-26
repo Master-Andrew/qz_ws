@@ -22,3 +22,6 @@ target_link_libraries (ndt_pointcloud ${PCL_LIBRARIES})
 
 add_executable (manual_registration manual_registration.cpp)
 target_link_libraries (manual_registration ${PCL_LIBRARIES})
+
+add_executable (m1_analyze m1_analyze.cpp)
+target_link_libraries (m1_analyze ${PCL_LIBRARIES})
