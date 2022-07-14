@@ -169,4 +169,4 @@ def mian(path, head):
 if __name__ == "__main__":
   # path = "/home/qcraft/Downloads/camera_intrinsic/H110/"
   path = "/home/qcraft/vehicles/v2/camera/inherent/"
-  mian(path, "H30S1")
+  mian(path, "H60")

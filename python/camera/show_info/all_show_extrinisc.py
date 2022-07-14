@@ -1,5 +1,5 @@
 import os
-from show_extrinsic import *
+from show_param import *
 
 # car_list = [file[:-7] for file in os.listdir(param_path) if file[0] == "Q"]
 # for car in car_list:
@@ -53,7 +53,6 @@ def print_dict(d, i=0):
 
 
 for device in devices:
-
   extrinsic_dir = "{}{}/installation/".format(param_path, device)
   file_list = [file for file in os.listdir(extrinsic_dir) if file[-6:] == "pb.txt"]
   extrinsic_sum = {}
